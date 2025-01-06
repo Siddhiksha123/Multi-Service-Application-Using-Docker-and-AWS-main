@@ -1,4 +1,4 @@
-# Dockerfile for comment service
+# Dockerfile for user service
 FROM node:16
 
 # Set working directory
@@ -10,8 +10,8 @@ COPY package*.json ./
 # Install dependencies
 RUN npm install
 
-# Copy everything from the current context (which is './comment' directory)
-COPY ./ .  # This copies files from the 'comment' directory (relative to the Dockerfile location)
+# Copy everything from the build context (i.e., './user')
+COPY . .
 
 # Expose the required port
 EXPOSE 5000
