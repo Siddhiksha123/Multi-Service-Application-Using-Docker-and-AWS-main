@@ -11,7 +11,7 @@ COPY package*.json ./
 RUN npm install
 
 # Copy the service-specific application code
-COPY ./user .  # Adjust this for each service: ./blog for blog, ./comment for comment
+COPY ./comment .  # Adjust this for each service: ./blog for blog, ./comment for comment
 
 # Expose the port the service will run on
 EXPOSE 5000
