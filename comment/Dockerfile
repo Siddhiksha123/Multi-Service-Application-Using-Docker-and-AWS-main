@@ -1,4 +1,4 @@
-# Use a Node.js base image
+# Dockerfile for user service
 FROM node:16
 
 # Set working directory
@@ -10,8 +10,8 @@ COPY package*.json ./
 # Install dependencies
 RUN npm install
 
-# Copy all files from the current directory (which is the 'comment' directory in this case)
-COPY ./comment .  # This will copy everything from the 'comment' directory
+# Copy all files from the current directory (this should be the 'user' directory)
+COPY ./ .  # Copy everything from the 'user' directory
 
 # Expose the required port
 EXPOSE 5000
