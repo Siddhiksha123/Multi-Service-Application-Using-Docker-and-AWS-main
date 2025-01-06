@@ -10,8 +10,8 @@ COPY package*.json ./
 # Install dependencies
 RUN npm install
 
-# Copy everything from the current context (which is './user' directory)
-COPY ./ .  # This copies files from the 'user' directory (relative to the Dockerfile location)
+# Copy everything from the build context (i.e., './user')
+COPY . .
 
 # Expose the required port
 EXPOSE 5000
