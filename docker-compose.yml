@@ -1,0 +1,46 @@
+version: '3.8'
+services:
+  user:
+    build: ./user
+    ports:
+      - "5001:5000"
+    environment:
+      - DATABASE_URL=postgres://user:password@db:5432/user_db
+      - JWT_SECRET=mysecret
+    networks:
+      - app-network
+
+  blog:
+    build: ./blog
+    ports:
+      - "5002:5000"
+    environment:
+      - DATABASE_URL=postgres://user:password@db:5432/blog_db
+    networks:
+      - app-network
+
+  comment:
+    build: ./comment
+    ports:
+      - "5003:5000"
+    environment:
+      - DATABASE_URL=postgres://user:password@db:5432/comment_db
+    networks:
+      - app-network
+
+  db:
+    image: postgres:15
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=main_db
+    networks:
+      - app-network
+
+networks:
+  app-network:
+
+volumes:
+  pgdata:
