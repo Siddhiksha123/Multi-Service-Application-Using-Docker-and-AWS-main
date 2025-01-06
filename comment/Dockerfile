@@ -1,20 +1,20 @@
-# Use Node.js base image
+# Use a Node.js base image
 FROM node:16
 
-# Set the working directory in the container
+# Set working directory
 WORKDIR /app
 
-# Copy the package.json and package-lock.json from the root directory
+# Copy package.json and package-lock.json for npm install
 COPY package*.json ./
 
-# Install dependencies from the root package.json
+# Install dependencies
 RUN npm install
 
-# Copy the service-specific application code
-COPY ./comment .  # Adjust this for each service: ./blog for blog, ./comment for comment
+# Copy all files from the current directory (which is the 'comment' directory in this case)
+COPY ./comment .  # This will copy everything from the 'comment' directory
 
-# Expose the port the service will run on
+# Expose the required port
 EXPOSE 5000
 
-# Command to run the application
+# Start the application
 CMD ["npm", "start"]
