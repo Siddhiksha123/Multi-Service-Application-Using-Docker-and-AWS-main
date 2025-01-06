@@ -1,9 +1,7 @@
 version: '3.8'
 services:
   user:
-    build:
-      context: ./user
-      dockerfile: Dockerfile  # Explicitly reference the Dockerfile
+    build: ./user
     ports:
       - "5001:5000"
     environment:
@@ -13,9 +11,7 @@ services:
       - app-network
 
   blog:
-    build:
-      context: ./blog
-      dockerfile: Dockerfile  # Explicitly reference the Dockerfile
+    build: ./blog
     ports:
       - "5002:5000"
     environment:
@@ -24,9 +20,7 @@ services:
       - app-network
 
   comment:
-    build:
-      context: ./comment
-      dockerfile: Dockerfile  # Explicitly reference the Dockerfile
+    build: ./comment
     ports:
       - "5003:5000"
     environment:
